@@ -6,6 +6,7 @@ import donorRoutes from "./routes/donorRoutes.js";
 import adminRoutes from "./routes/adminRoutes.js";
 import patientRoutes from "./routes/patientRoutes.js";
 import eventRoutes from "./routes/eventRoutes.js";
+import certificateRoutes from "./routes/certificateRoutes.js";
 import * as cron from "node-cron";
 import { updateDonorStatus } from "./utils/updateDonorStatus.js";
 import path from "path";
@@ -28,6 +29,7 @@ app.use("/api/admin", adminRoutes);
 app.use("/api/patient", patientRoutes);
 app.use("/api/uploads", express.static(path.join("uploads")));
 app.use("/api/events", eventRoutes);
+app.use("/api/certificates", certificateRoutes);
 
 cron.schedule("0 0 * * *", async () => {
   console.log("Running daily donor status update...");
